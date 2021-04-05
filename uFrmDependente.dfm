@@ -1,0 +1,32 @@
+object frmDependente: TfrmDependente
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = 'frmDependente'
+  ClientHeight = 533
+  ClientWidth = 912
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsMDIChild
+  OldCreateOrder = False
+  Visible = True
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 912
+    Height = 533
+    Align = alClient
+    Caption = 'Panel1'
+    Color = clHighlight
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+  end
+end

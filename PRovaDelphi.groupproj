@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{4E518493-8F98-4382-BC39-D2C9122ABE1D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="package\spComponentes.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="spComponentesDT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Tarefas.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TarefasTest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="spComponentes">
+        <MSBuild Projects="package\spComponentes.dproj"/>
+    </Target>
+    <Target Name="spComponentes:Clean">
+        <MSBuild Projects="package\spComponentes.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="spComponentes:Make">
+        <MSBuild Projects="package\spComponentes.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="spComponentesDT">
+        <MSBuild Projects="spComponentesDT.dproj"/>
+    </Target>
+    <Target Name="spComponentesDT:Clean">
+        <MSBuild Projects="spComponentesDT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="spComponentesDT:Make">
+        <MSBuild Projects="spComponentesDT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Tarefas">
+        <MSBuild Projects="Tarefas.dproj"/>
+    </Target>
+    <Target Name="Tarefas:Clean">
+        <MSBuild Projects="Tarefas.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Tarefas:Make">
+        <MSBuild Projects="Tarefas.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TarefasTest">
+        <MSBuild Projects="TarefasTest.dproj"/>
+    </Target>
+    <Target Name="TarefasTest:Clean">
+        <MSBuild Projects="TarefasTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TarefasTest:Make">
+        <MSBuild Projects="TarefasTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="spComponentes;spComponentesDT;Tarefas;TarefasTest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="spComponentes:Clean;spComponentesDT:Clean;Tarefas:Clean;TarefasTest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="spComponentes:Make;spComponentesDT:Make;Tarefas:Make;TarefasTest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

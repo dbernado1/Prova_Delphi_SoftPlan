@@ -1,0 +1,44 @@
+unit uspComponentesRegistro;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, uspQuery;
+
+type
+  TspComponentesRegistro = class(TFDQuery)
+  private
+    FspQuery: TspQuery;
+    { Private declarations }
+  protected
+    { Protected declarations }
+    constructor Create;
+    destructor Destroy;
+  public
+    { Public declarations }
+  published
+    { Published declarations }
+    property spQuery: TspQuery read FspQuery write FspQuery;
+  end;
+
+procedure Register;
+
+implementation
+
+procedure Register;
+begin
+  RegisterComponents('TspQuery', [TspQuery]);
+end;
+
+constructor TspComponentesRegistro.Create;
+begin
+
+end;
+
+destructor TspComponentesRegistro.Destroy;
+begin
+
+end;
+
+end.

@@ -1,0 +1,58 @@
+unit spComponentes;
+
+interface
+uses FireDAC.Comp.Client, Classes, SysUtils;
+
+type
+  TspQuery = class(TFDQuery)
+  private
+    FspCondicoes: TStringList;
+    FspColunas: TStringList;
+    FspTabelas: TStringList;
+  public
+    procedure GeraSQL;
+  published
+    property spCondicoes: TStringList read FspCondicoes write FspCondicoes;
+    property spColunas:   TStringList read FspColunas   write FspColunas;
+    property spTabelas:   TStringList read FspTabelas   write FspTabelas;
+end;
+
+implementation
+
+procedure TspQuery.GeraSQL;
+var
+ vStl: TStringList;
+  I: Integer;
+begin
+  vStl := TStringList.Create;
+
+  try
+   if (Self.spTabelas.Count <= 0) then
+    raise Exception.Create('Não foi informada nenhuma tabela.');
+
+   if (Self.spTabelas.Count > 1) then
+    raise Exception.Create('Só é permitido o uso de uma tabela por SQL.');
+
+   vStl.Clear;
+   vStl.Add('SELECT');
+
+   if (Self.spColunas.Count <= 0) then
+    vStl.Add('*')
+   else
+    begin
+     vStl.Add(self.spColunas[0]);
+
+     for I := 1 to Self.spColunas.Count - 1 do
+      vStl.Add(', ' +self.spColunas[I]);
+    end;
+
+   vStl.Add('FROM ' + Self.spTabelas[0]);
+   vStl.Add('WHERE');
+
+
+  finally
+   FreeAndNil(vStl);
+  end;
+end;
+
+end.
